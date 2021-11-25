@@ -17,45 +17,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.mythingscollection.domain.Jogo;
-import com.project.mythingscollection.service.JogoService;
+import com.project.mythingscollection.domain.ProcedureDePara;
+import com.project.mythingscollection.service.ProcedureDeParaService;
 
 @RestController
 @RequestMapping(value = "/jogos")
-public class JogoResource {
+public class ProcedureDeParaResource {
 	@Autowired
-	private JogoService jogoservice;
+	private ProcedureDeParaService ProcedureDeParaservice;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity <Jogo> findById(@PathVariable Integer id){
-		Jogo obj = jogoservice.findbyId(id);
+	public ResponseEntity <ProcedureDePara> findById(@PathVariable Integer id){
+		ProcedureDePara obj = ProcedureDeParaservice.findbyId(id);
 		return ResponseEntity.ok().body(obj);
 		
 	}
 	
 	@GetMapping
-	public ResponseEntity <List<Jogo>> findAll(){
-		List<Jogo> list = jogoservice.findAll();
+	public ResponseEntity <List<ProcedureDePara>> findAll(){
+		List<ProcedureDePara> list = ProcedureDeParaservice.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Jogo> create(@Valid @RequestBody Jogo obj){
-		Jogo retorno = jogoservice.create(obj);
+	public ResponseEntity<ProcedureDePara> create(@Valid @RequestBody ProcedureDePara obj){
+		ProcedureDePara retorno = ProcedureDeParaservice.create(obj);
 		return ResponseEntity.status(HttpStatus.CREATED).body(retorno);
 		
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Jogo> update(@Valid @PathVariable Integer id, @RequestBody Jogo obj){
-		Jogo retorno = jogoservice.update(id, obj);
+	public ResponseEntity<ProcedureDePara> update(@Valid @PathVariable Integer id, @RequestBody ProcedureDePara obj){
+		ProcedureDePara retorno = ProcedureDeParaservice.update(id, obj);
 		return ResponseEntity.ok().body(retorno);
 		
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Jogo> delete(@PathVariable Integer id){
-		jogoservice.delete(id);
+	public ResponseEntity<ProcedureDePara> delete(@PathVariable Integer id){
+		ProcedureDeParaservice.delete(id);
 		return ResponseEntity.noContent().build();
 		
 	}
